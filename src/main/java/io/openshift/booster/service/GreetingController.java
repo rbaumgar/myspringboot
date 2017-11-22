@@ -31,8 +31,13 @@ public class GreetingController {
     }
 
     @RequestMapping("/api/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         String message = String.format(properties.getMessage(), name);
         return new Greeting(message);
+    }
+
+    @RequestMapping("/api/goodbye")
+    public String goodbye(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return "Goodbye " + name + " " + new java.util.Date();
     }
 }
